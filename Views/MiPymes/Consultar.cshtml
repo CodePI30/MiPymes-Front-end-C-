@@ -1,0 +1,26 @@
+﻿@model MiPymes_Front_end_C_.Models.Empresa
+
+@{
+    ViewData["Title"] = "Consultar Empresa";
+}
+
+<h2>Consultar Empresa</h2>
+
+<form asp-action="Consultar" method="post">
+    <div>
+        <label for="rnc">RNC:</label>
+        <input type="text" id="rnc" name="rnc" class="form-control" required />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Consultar</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

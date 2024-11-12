@@ -1,0 +1,64 @@
+﻿@model MiPyme
+
+@{
+    ViewData["Title"] = "Crear nueva MiPyme";
+}
+
+<h1>Agregar nueva MiPyme <span class="text-warning text-uppercase">proxima a vencer</span></h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="RNC">RNC</label>
+        <input asp-for="RNC" class="form-control" id="inputRnc"/>
+        <span asp-validation-for="RNC" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Empresa">Empresa</label>
+        <input asp-for="Empresa" class="form-control" id="inputEmpresa"/>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Fecha_Emision">Fecha Emisión</label>
+        <input asp-for="Fecha_Emision" type="date" class="form-control" id="inputFechaEmision"/>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Fecha_de_Vencimiento">Fecha Vencimiento</label>
+        <input asp-for="Fecha_de_Vencimiento" type="date" class="form-control" id="inputFechaVencimiento" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Clasificacion">Clasificación</label>
+        <select asp-for="Clasificacion" class="form-control" id="clasificacionDropdown">
+            <option value="">Seleccionar...</option>
+            <option value="Microempresa">Microempresa</option>
+            <option value="Mediana">Mediana</option>
+            <option value="Grande">Grande</option>
+            <option value="Macro-Empresa">Macro-Empresa</option>
+        </select>
+    </div>
+
+    <br />
+    <div class="input-group">
+        <span class="input-group-text">Actividad Economica</span>
+        <textarea asp-for="Actividad" class="form-control" aria-label="With textarea" id="inputActividad"></textarea>
+        <br />
+        <span asp-validation-for="Actividad" class="text-danger"></span>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+<div>
+    <span asp-validation-summary="All" class="text-danger"></span>
+</div>
+
+@section Scripts {
+    <!-- Agrega las bibliotecas necesarias para la validación del lado del cliente -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

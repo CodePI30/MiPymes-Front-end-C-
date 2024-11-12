@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MiPyme>
+
+@{
+    ViewData["Title"] = "Lista de MiPYMES";
+}
+
+<head>
+    <style>
+        table{
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<h1>Lista de MiPymes con fecha de vencimiento proxima</h1>
+
+<p>
+    <a asp-action="Consultar" class="btn btn-primary">Ir a Consultar Empresa</a>&nbsp;&nbsp;&nbsp;
+    <a asp-action="Create" class="btn btn-secondary" id="createMiPyme">Crear nueva MiPyme</a>&nbsp;&nbsp;&nbsp;
+</p>
+<br />
+
+<form method="get" asp-action="Index">
+    <div class="form-group">
+        <strong for="searchTerm">Buscar por Nombre de Empresa:</strong>
+        <br />
+        <input type="text" id="searchTerm" name="searchTerm" class="form-control" value="@ViewBag.SearchTerm" placeholder="Ingrese nombre de la empresa">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-info mt-2">Buscar</button>
+</form>
+<br />
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr class="table-dark">
+        <th>RNC</th>
+        <th>Empresa</th>
+        <th>Fecha Emision</th>
+        <th>Fecha Vencimiento</th>
+        <th>Clasificacion</th>
+        <th>Actividad</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var miPyme in Model)
+            {
+                <tr>
+                    <td>@miPyme.RNC</td>
+                    <td>@miPyme.Empresa</td>
+                    <td>@miPyme.Fecha_Emision</td>
+                    <td>@miPyme.Fecha_de_Vencimiento</td>
+                    <td>@miPyme.Clasificacion</td>
+                    <td>@miPyme.Actividad</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-rnc="@miPyme.RNC" class="btn btn-primary btn-sm">Editar</a>
+                        <br />
+                        <a asp-action="Delete" asp-route-rnc="@miPyme.RNC" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">No se encontraron resultados.</td>
+            </tr>
+        }
+    </tbody>
+</table>

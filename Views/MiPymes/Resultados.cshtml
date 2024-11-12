@@ -1,0 +1,31 @@
+﻿@model Empresa
+
+@{
+    ViewData["Title"] = "Resultados de Consulta";
+}
+
+<h2>Resultados de Consulta</h2>
+
+@if (Model != null)
+{  
+    <div class="card">
+        <h5 class="card-header">Empresa encontrada</h5>
+        <div class="card-body">
+            <h5 class="card-title">RNC: @Model.rnc</h5>
+            <p><strong>Clasificación:</strong> @Model.razon</p>
+            <p><strong>Nombre:</strong> @Model.nombre</p>
+            <p><strong>Fecha de Emisión:</strong> @Model.estado</p>
+            <p><strong>Fecha de Vencimiento:</strong> @Model.tipo_empresa</p>
+            <p><strong>Actividad:</strong> @Model.categoria</p>
+            <p><strong>Actividad:</strong> @Model.actividad_economica</p>
+            <p><strong>Actividad:</strong> @Model.regimen_de_pagos</p>
+        </div>
+    </div>
+}
+else
+{
+    <p>No se encontró información para el RNC proporcionado.</p>
+}
+
+<br />
+<a asp-action="Consultar" class="btn btn-primary">Volver a consultar</a>

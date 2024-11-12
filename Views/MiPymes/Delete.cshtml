@@ -1,0 +1,53 @@
+﻿@model MiPyme
+
+<h2>Eliminar MiPyme</h2>
+
+<p>¿Estás seguro que deseas eliminar la siguiente MiPyme?</p>
+
+<div>
+    <h4>MiPyme</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Empresa
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Empresa
+        </dd>
+        <dt class="col-sm-2">
+            RNC
+        </dt>
+        <dd class="col-sm-10">
+            @Model.RNC
+        </dd>
+        <dt class="col-sm-2">
+            Fecha emision
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Fecha_Emision
+        </dd>
+        <dt class="col-sm-2">
+            Fecha vencimiento
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Fecha_de_Vencimiento
+        </dd>
+        <dt class="col-sm-2">
+            Clasificación
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Clasificacion
+        </dd>
+        <dt class="col-sm-2">
+            Actividad
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Actividad
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-rnc="@Model.RNC" method="post">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
