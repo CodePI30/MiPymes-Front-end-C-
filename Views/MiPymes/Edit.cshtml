@@ -15,7 +15,7 @@
         <label asp-for="Empresa" class="control-label"></label>
         <input asp-for="Empresa" class="form-control" />
         <span asp-validation-for="Empresa" class="text-danger"></span>
-    </div>
+    </div>  
 
     <div class="form-group">
         <label asp-for="Fecha_Emision" class="control-label"></label>
@@ -45,9 +45,35 @@
     <button type="submit" class="btn btn-warning">Save</button>
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
+<iframe id="angularApp" src="http://localhost:4200/mi-pyme-form" width="100%" height="800px"></iframe>
+
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<script>
+    window.onload = function () {
+        // Captura los valores de los inputs
+        const RNC = document.getElementById("RNC").value;
+        const Empresa = document.getElementById("Empresa").value;
+        const Fecha_Emision = document.getElementById("Fecha_Emision").value;
+        const Fecha_de_Vencimiento = document.getElementById("Fecha_de_Vencimiento").value;
+        const Clasificacion = document.getElementById("Clasificacion").value;
+        const Actividad = document.getElementById("Actividad").value;
+
+        // Imprimir los datos para verificar
+        console.log({ RNC, Empresa, Fecha_Emision, Fecha_de_Vencimiento, Clasificacion, Actividad });
+
+        // Construir la URL con los parámetros
+        const url = `http://localhost:4200/mi-pyme-form?RNC=${encodeURIComponent(RNC)}&Empresa=${encodeURIComponent(Empresa)}&Fecha_Emision=${encodeURIComponent(Fecha_Emision)}&Fecha_de_Vencimiento=${encodeURIComponent(Fecha_de_Vencimiento)}&Clasificacion=${encodeURIComponent(Clasificacion)}&Actividad=${encodeURIComponent(Actividad)}`;
+
+        // Obtiene el iframe que contiene la aplicación Angular
+        const iframe = document.getElementById("angularApp");
+
+        // Asignar la URL con los parámetros al iframe
+        iframe.src = url;
+    }
+</script>
