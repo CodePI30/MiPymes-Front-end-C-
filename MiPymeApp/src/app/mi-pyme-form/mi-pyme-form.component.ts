@@ -22,13 +22,14 @@ export class MiPymeFormComponent implements OnInit {
       // Asignar los valores de los parámetros a las variables correspondientes
       this.RNC = params['RNC'] || '';
       this.Empresa = params['Empresa'] || '';
-      this.Fecha_Emision = params['Fecha_Emision'] || '';
+      this.Fecha_Emision = params['Fecha_Emision'] || ''; 
       this.Fecha_de_Vencimiento = params['Fecha_de_Vencimiento'] || '';
       this.Clasificacion = params['Clasificacion'] || '';
       this.Actividad = params['Actividad'] || '';
 
       // Mostrar los valores
       console.log(this.RNC, this.Empresa, this.Fecha_Emision, this.Fecha_de_Vencimiento, this.Clasificacion, this.Actividad);
+
     });
   }
 }
